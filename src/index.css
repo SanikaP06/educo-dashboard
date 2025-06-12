@@ -217,12 +217,15 @@ body {
 }
 
 /* Middle section for Hours Activity and Daily Schedule side by side */
+
 .middle-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  align-items: stretch; /* Ensure equal heights */
+  gap: 16px;
+  align-items: stretch; /* Allow natural heights instead of stretching */
 }
+
+
 
 @media (max-width: 768px) {
   .middle-section {

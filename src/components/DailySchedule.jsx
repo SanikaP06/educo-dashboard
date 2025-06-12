@@ -1,5 +1,4 @@
 "use client"
-
 import { ChevronRight } from "lucide-react"
 
 const DailySchedule = () => {
@@ -40,11 +39,11 @@ const DailySchedule = () => {
 
   return (
     <div className="card">
-      <h3 style={{ fontSize: "1.125rem", fontWeight: "600", color: "#111827", marginBottom: "24px" }}>
+      <h3 style={{ fontSize: "0.875rem", fontWeight: "600", color: "#111827", marginBottom: "8px" }}>
         Daily Schedule
       </h3>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
         {scheduleItems.map((item) => (
           <div
             key={item.id}
@@ -52,34 +51,34 @@ const DailySchedule = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              padding: "12px",
-              borderRadius: "8px",
+              padding: "6px 8px",
+              borderRadius: "4px",
               transition: "background-color 0.2s",
               cursor: "pointer",
             }}
             onMouseEnter={(e) => (e.target.style.backgroundColor = "#f9fafb")}
             onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
               <div
                 style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "8px",
+                  width: "28px",
+                  height: "28px",
+                  borderRadius: "4px",
                   backgroundColor: item.color,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <span style={{ fontSize: "18px" }}>{item.icon}</span>
+                <span style={{ fontSize: "12px" }}>{item.icon}</span>
               </div>
               <div>
-                <h4 style={{ fontWeight: "500", color: "#111827", marginBottom: "2px" }}>{item.title}</h4>
-                <p style={{ fontSize: "14px", color: "#6b7280" }}>{item.type}</p>
+                <h4 style={{ fontWeight: "500", color: "#111827", marginBottom: "0px", fontSize: "13px", lineHeight: "1.2" }}>{item.title}</h4>
+                <p style={{ fontSize: "11px", color: "#6b7280", lineHeight: "1.2" }}>{item.type}</p>
               </div>
             </div>
-            <ChevronRight style={{ height: "20px", width: "20px", color: "#9ca3af" }} />
+            <ChevronRight style={{ height: "14px", width: "14px", color: "#9ca3af" }} />
           </div>
         ))}
       </div>
