@@ -1,4 +1,5 @@
 "use client"
+
 import { useState, useEffect } from "react"
 import Sidebar from "./Sidebar"
 import Header from "./Header"
@@ -50,13 +51,7 @@ const Dashboard = () => {
         <div className="dashboard-layout">
           {/* Left Content */}
           <div className="left-content">
-            <div style={{ 
-              marginBottom: "32px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              paddingRight: "340px" // Account for right sidebar width + gap
-            }}>
+            <div style={{ marginBottom: "32px" }}>
               <h1
                 style={{
                   fontSize: "2.5rem",
