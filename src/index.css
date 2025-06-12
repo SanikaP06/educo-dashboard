@@ -92,7 +92,7 @@ body {
 .main-content {
   margin-left: 0;
   min-height: calc(100vh - 40px);
-  background: rgb(253, 252, 252);
+  background: white;
   border-radius: 24px;
   overflow: hidden;
 }
@@ -142,7 +142,7 @@ body {
 .card {
   background-color: white;
   border-radius: 20px;
-  padding: 20px; /* Reduced from 24px */
+  padding: 16px; /* Reduced from 24px */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   height: 100%;
   min-height: 280px; /* Increased minimum height */
@@ -153,7 +153,7 @@ body {
 .course-card {
   background-color: white;
   border-radius: 20px;
-  padding: 24px;
+  padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: all 0.2s;
   cursor: pointer;
@@ -170,8 +170,8 @@ body {
 .dashboard-layout {
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 32px;
-  padding: 32px;
+  gap: 16px;
+  padding: 24px;
   max-width: 1600px;
   margin: 0 auto;
 }
@@ -192,7 +192,7 @@ body {
 .right-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 .courses-grid {
@@ -205,7 +205,7 @@ body {
 @media (max-width: 1024px) {
   .courses-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 12px;
   }
 }
 
@@ -361,3 +361,81 @@ body {
 .calendar-day.other-month {
   color: #d1d5db;
 }
+
+/* Responsive Fixes Start */
+
+/* Dashboard Container – reduce padding on small screens */
+@media (max-width: 640px) {
+  .dashboard-container {
+    padding: 12px;
+  }
+}
+
+/* Dashboard Layout – reduce padding and gap */
+@media (max-width: 768px) {
+  .dashboard-layout {
+    padding: 12px;
+    gap: 16px;
+  }
+}
+
+/* Middle Section – stack and tighten spacing */
+@media (max-width: 768px) {
+  .middle-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .middle-section {
+    gap: 12px;
+  }
+}
+
+/* Courses Grid – adjust layout and spacing */
+@media (max-width: 1024px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-grid {
+    gap: 10px;
+  }
+}
+
+/* Card and Course Card – adjust padding and height */
+.card,
+.course-card {
+  width: 100%;
+  padding: 16px;
+  min-height: auto;
+}
+
+@media (max-width: 640px) {
+  .card,
+  .course-card {
+    padding: 12px;
+  }
+}
+
+/* Sidebar – fully hidden on mobile */
+@media (max-width: 640px) {
+  .sidebar:not(.open) {
+    display: none;
+  }
+}
+
+/* Responsive Fixes End */
+
