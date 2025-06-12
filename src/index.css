@@ -170,8 +170,8 @@ body {
 .dashboard-layout {
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 16px;
-  padding: 24px;
+  gap: 10px;
+  padding: 32px;
   max-width: 1600px;
   margin: 0 auto;
 }
@@ -430,7 +430,7 @@ body {
   }
 }
 
-/* Sidebar – fully hidden on mobile */
+
 @media (max-width: 640px) {
   .sidebar:not(.open) {
     display: none;
