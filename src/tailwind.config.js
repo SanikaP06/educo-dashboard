@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const defaultConfig = require("shadcn/ui/tailwind.config")
+const defaultConfig = require("shadcn/ui/tailwind.config");
 
 module.exports = {
   ...defaultConfig,
@@ -8,15 +8,15 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/shadcn/ui/**/*.{js,ts,jsx,tsx}", // ✅ Required for shadcn/ui styles
   ],
   theme: {
     ...defaultConfig.theme,
     extend: {
       colors: {
-        ...defaultConfig.theme.extend.colors,
+        ...defaultConfig.theme.extend?.colors,
         primary: {
-          ...defaultConfig.theme.extend.colors.primary,
+          ...defaultConfig.theme.extend?.colors?.primary,
           50: "#f0f9ff",
           100: "#e0f2fe",
           500: "#0ea5e9",
@@ -24,7 +24,7 @@ module.exports = {
           700: "#0369a1",
         },
         purple: {
-          ...defaultConfig.theme.extend.colors.purple,
+          ...defaultConfig.theme.extend?.colors?.purple,
           50: "#faf5ff",
           100: "#f3e8ff",
           200: "#e9d5ff",
@@ -34,37 +34,37 @@ module.exports = {
           600: "#9333ea",
         },
         green: {
-          ...defaultConfig.theme.extend.colors.green,
+          ...defaultConfig.theme.extend?.colors?.green,
           50: "#f0fdf4",
           100: "#dcfce7",
           400: "#4ade80",
           500: "#22c55e",
         },
         yellow: {
-          ...defaultConfig.theme.extend.colors.yellow,
+          ...defaultConfig.theme.extend?.colors?.yellow,
           400: "#facc15",
           500: "#eab308",
         },
         orange: {
-          ...defaultConfig.theme.extend.colors.orange,
+          ...defaultConfig.theme.extend?.colors?.orange,
           100: "#ffedd5",
           400: "#fb923c",
           500: "#f97316",
           600: "#ea580c",
         },
         blue: {
-          ...defaultConfig.theme.extend.colors.blue,
+          ...defaultConfig.theme.extend?.colors?.blue,
           100: "#dbeafe",
           600: "#2563eb",
         },
         pink: {
-          ...defaultConfig.theme.extend.colors.pink,
+          ...defaultConfig.theme.extend?.colors?.pink,
           50: "#fdf2f8",
           100: "#fce7f3",
           400: "#f472b6",
         },
         gray: {
-          ...defaultConfig.theme.extend.colors.gray,
+          ...defaultConfig.theme.extend?.colors?.gray,
           50: "#f9fafb",
           100: "#f3f4f6",
           200: "#e5e7eb",
@@ -135,4 +135,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
