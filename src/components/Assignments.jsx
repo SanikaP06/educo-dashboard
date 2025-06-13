@@ -131,14 +131,7 @@ const Assignments = () => {
   }
 
   return (
-    <div style={{ 
-      backgroundColor: "white",
-      borderRadius: "12px",
-      border: "1px solid #e2e8f0",
-      padding: windowWidth < 640 ? "16px" : "20px",
-      maxWidth: "400px",
-      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)"
-    }}>
+    <div>
       <div
         style={{
           display: "flex",

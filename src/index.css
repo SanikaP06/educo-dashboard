@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 * {
   box-sizing: border-box;
@@ -27,11 +27,11 @@ body {
 /* Custom styles to ensure layout works */
 .dashboard-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #e9d5ff 0%, #f3e8ff 50%, #fce7f3 100%);
-  padding: 20px;
+  background: #f5f1ff;
+  padding: 16px;
   border-radius: 24px;
   margin: 0;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 .sidebar {
@@ -40,12 +40,14 @@ body {
   left: 20px;
   width: 260px;
   height: calc(100vh - 40px);
-  background-color: #2d3748;
+  background-color: #1e1e2d;
   border-radius: 24px;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1000;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar.open {
@@ -122,12 +124,12 @@ body {
 }
 
 .sidebar-item:hover {
-  background-color: #4a5568;
+  background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
 
 .sidebar-item.active {
-  background-color: #9ae6b4;
+  background-color: #c1ff72;
   color: #1a202c;
   font-weight: 600;
 }
@@ -141,23 +143,24 @@ body {
 /* Cards - Maximize space utilization */
 .card {
   background-color: white;
-  border-radius: 20px;
-  padding: 16px; /* Reduced from 24px */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   height: 100%;
-  min-height: 280px; /* Increased minimum height */
+  min-height: auto;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .course-card {
   background-color: white;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: all 0.2s;
   cursor: pointer;
-  border: 1px solid #f7fafc;
+  border: 1px solid rgba(0, 0, 0, 0.03);
   height: 100%;
 }
 
@@ -170,8 +173,8 @@ body {
 .dashboard-layout {
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 10px;
-  padding: 32px;
+  gap: 16px;
+  padding: 12px;
   max-width: 1600px;
   margin: 0 auto;
 }
@@ -179,27 +182,27 @@ body {
 @media (max-width: 1280px) {
   .dashboard-layout {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 16px;
   }
 }
 
 .left-content {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 14px;
 }
 
 .right-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 14px;
 }
 
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 0;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
 @media (max-width: 1024px) {
@@ -212,7 +215,8 @@ body {
 @media (max-width: 640px) {
   .courses-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 14px;
+    padding: 0;
   }
 }
 
@@ -221,39 +225,38 @@ body {
 .middle-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  align-items: stretch; /* Allow natural heights instead of stretching */
+  gap: 14px;
+  margin-bottom: 14px;
 }
-
-
 
 @media (max-width: 768px) {
   .middle-section {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 14px;
   }
 
   .dashboard-layout {
-    padding: 20px;
-    gap: 20px;
+    padding: 12px;
+    gap: 14px;
   }
 
   .left-content {
-    gap: 24px;
+    gap: 14px;
   }
 
   .courses-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
   }
 }
 
 /* Header */
 .header {
   background-color: white;
-  border-bottom: 1px solid #f7fafc;
+  border-bottom: none;
   position: sticky;
   top: 0;
   z-index: 100;
+  padding: 6px 0;
 }
 
 /* Mobile overlay */
@@ -272,15 +275,15 @@ body {
 /* Chart styles - FIXED */
 .chart-container {
   position: relative;
-  height: 200px;
-  margin: 20px 0;
+  height: 180px;
+  margin: 16px 0;
 }
 
 .chart-bars {
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  height: 160px;
+  height: 140px;
   padding: 0 20px;
   position: relative;
 }
@@ -323,13 +326,13 @@ body {
   width: 100%;
   height: 8px;
   background-color: #f3f4f6;
-  border-radius: 4px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  border-radius: 4px;
+  border-radius: 10px;
   transition: width 0.5s ease;
 }
 
@@ -337,7 +340,7 @@ body {
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
+  gap: 2px;
 }
 
 .calendar-day {
@@ -345,11 +348,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 4px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
+  min-height: 24px;
+  max-height: 24px;
 }
 
 .calendar-day:hover {
@@ -357,8 +362,8 @@ body {
 }
 
 .calendar-day.today {
-  background-color: #fbbf24;
-  color: #1f2937;
+  background-color: #c1ff72;
+  color: #1a202c;
 }
 
 .calendar-day.other-month {
@@ -378,7 +383,7 @@ body {
 @media (max-width: 768px) {
   .dashboard-layout {
     padding: 12px;
-    gap: 16px;
+    gap: 14px;
   }
 }
 
@@ -386,7 +391,7 @@ body {
 @media (max-width: 768px) {
   .middle-section {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 14px;
   }
 }
 
@@ -400,7 +405,7 @@ body {
 @media (max-width: 1024px) {
   .courses-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 14px;
   }
 }
 
@@ -422,7 +427,7 @@ body {
 .card,
 .course-card {
   width: 100%;
-  padding: 16px;
+  padding: 14px;
   min-height: auto;
 }
 
@@ -433,12 +438,8 @@ body {
   }
 }
 
-
 @media (max-width: 640px) {
   .sidebar:not(.open) {
     display: none;
   }
 }
-
-
-

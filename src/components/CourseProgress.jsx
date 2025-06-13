@@ -35,33 +35,11 @@ const CourseProgress = () => {
       color: "#fce7f3",
       progressColor: "#10b981",
       avatar: "👤",
-      status: "In Progress",
-    },
-    {
-      id: 3,
-      title: "UI/UX Fundamentals",
-      instructor: "Sarah Johnson",
-      remaining: "12h 30 min",
-      progress: 30,
-      color: "#dbeafe",
-      progressColor: "#3b82f6",
-      avatar: "👤",
       status: "Active",
-    },
-    {
-      id: 4,
-      title: "Photography Basics",
-      instructor: "David Wilson",
-      remaining: "6h 15 min",
-      progress: 90,
-      color: "#dcfce7",
-      progressColor: "#22c55e",
-      avatar: "👤",
-      status: "In Progress",
     },
   ])
 
-  const filterOptions = ["Active", "In Progress"]
+  const filterOptions = ["Active", "Completed"]
 
   const filteredCourses = courses.filter((course) => course.status === filterType)
 
@@ -114,9 +92,9 @@ const CourseProgress = () => {
   }
 
   return (
-    <div className="card">
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "24px" }}>
-        <h3 style={{ fontSize: "1.125rem", fontWeight: "600", color: "#1a202c" }}>Course You're Taking</h3>
+    <div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
+        <h3 style={{ fontSize: "0.9rem", fontWeight: "600", color: "#1a202c", margin: 0 }}>Course You're Taking</h3>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <div style={{ position: "relative" }}>
             <button
@@ -129,7 +107,7 @@ const CourseProgress = () => {
                 background: "white",
                 border: "1px solid #e2e8f0",
                 borderRadius: "6px",
-                padding: "6px 10px",
+                padding: "4px 8px",
                 cursor: "pointer",
                 fontSize: "12px",
                 fontWeight: "500",
@@ -175,7 +153,7 @@ const CourseProgress = () => {
                     onClick={() => handleFilterChange(option)}
                     style={{
                       width: "100%",
-                      padding: "8px 12px",
+                      padding: "6px 10px",
                       textAlign: "left",
                       border: "none",
                       background: filterType === option ? "#f7fafc" : "transparent",
@@ -208,10 +186,10 @@ const CourseProgress = () => {
           <button
             onClick={handleAddCourse}
             style={{
-              width: "28px",
-              height: "28px",
-              backgroundColor: "#9ae6b4",
-              borderRadius: "8px",
+              width: "24px",
+              height: "24px",
+              backgroundColor: "#c1ff72",
+              borderRadius: "50%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -219,10 +197,10 @@ const CourseProgress = () => {
               cursor: "pointer",
               transition: "all 0.2s",
             }}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = "#68d391")}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = "#9ae6b4")}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#b3f264")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "#c1ff72")}
           >
-            <Plus style={{ height: "14px", width: "14px", color: "#1a202c" }} />
+            <Plus style={{ height: "12px", width: "12px", color: "#1a202c" }} />
           </button>
         </div>
       </div>
@@ -232,14 +210,14 @@ const CourseProgress = () => {
         <div
           style={{
             backgroundColor: "#f7fafc",
-            borderRadius: "12px",
-            padding: "20px",
-            marginBottom: "20px",
+            borderRadius: "8px",
+            padding: "12px",
+            marginBottom: "12px",
             border: "1px solid #e2e8f0",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
-            <h4 style={{ fontSize: "14px", fontWeight: "600", color: "#1a202c" }}>Add New Course</h4>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
+            <h4 style={{ fontSize: "13px", fontWeight: "600", color: "#1a202c", margin: 0 }}>Add New Course</h4>
             <button
               onClick={handleCancelAdd}
               style={{
@@ -254,18 +232,18 @@ const CourseProgress = () => {
               onMouseEnter={(e) => (e.target.style.color = "#1a202c")}
               onMouseLeave={(e) => (e.target.style.color = "#718096")}
             >
-              <X style={{ height: "16px", width: "16px" }} />
+              <X style={{ height: "14px", width: "14px" }} />
             </button>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             <input
               type="text"
               placeholder="Course Title"
               value={newCourse.title}
               onChange={(e) => setNewCourse({ ...newCourse, title: e.target.value })}
               style={{
-                padding: "8px 12px",
+                padding: "6px 10px",
                 border: "1px solid #e2e8f0",
                 borderRadius: "6px",
                 fontSize: "12px",
@@ -275,13 +253,14 @@ const CourseProgress = () => {
               onFocus={(e) => (e.target.style.borderColor = "#7c3aed")}
               onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
             />
+
             <input
               type="text"
               placeholder="Instructor Name"
               value={newCourse.instructor}
               onChange={(e) => setNewCourse({ ...newCourse, instructor: e.target.value })}
               style={{
-                padding: "8px 12px",
+                padding: "6px 10px",
                 border: "1px solid #e2e8f0",
                 borderRadius: "6px",
                 fontSize: "12px",
@@ -291,13 +270,14 @@ const CourseProgress = () => {
               onFocus={(e) => (e.target.style.borderColor = "#7c3aed")}
               onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
             />
+
             <input
               type="text"
-              placeholder="Remaining Time (e.g., 10h 30 min)"
+              placeholder="Remaining Time (e.g., 8h 45 min)"
               value={newCourse.remaining}
               onChange={(e) => setNewCourse({ ...newCourse, remaining: e.target.value })}
               style={{
-                padding: "8px 12px",
+                padding: "6px 10px",
                 border: "1px solid #e2e8f0",
                 borderRadius: "6px",
                 fontSize: "12px",
@@ -307,30 +287,35 @@ const CourseProgress = () => {
               onFocus={(e) => (e.target.style.borderColor = "#7c3aed")}
               onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
             />
-            <input
-              type="number"
-              placeholder="Progress (%)"
-              min="0"
-              max="100"
-              value={newCourse.progress}
-              onChange={(e) => setNewCourse({ ...newCourse, progress: e.target.value })}
-              style={{
-                padding: "8px 12px",
-                border: "1px solid #e2e8f0",
-                borderRadius: "6px",
-                fontSize: "12px",
-                outline: "none",
-                transition: "border-color 0.2s",
-              }}
-              onFocus={(e) => (e.target.style.borderColor = "#7c3aed")}
-              onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
-            />
-            <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+              <label style={{ fontSize: "12px", color: "#718096", fontWeight: "500" }}>Progress (%)</label>
+              <input
+                type="number"
+                min="0"
+                max="100"
+                placeholder="Progress (0-100)"
+                value={newCourse.progress || ""}
+                onChange={(e) => setNewCourse({ ...newCourse, progress: e.target.value })}
+                style={{
+                  padding: "6px 10px",
+                  border: "1px solid #e2e8f0",
+                  borderRadius: "6px",
+                  fontSize: "12px",
+                  outline: "none",
+                  transition: "border-color 0.2s",
+                }}
+                onFocus={(e) => (e.target.style.borderColor = "#7c3aed")}
+                onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
+              />
+            </div>
+
+            <div style={{ display: "flex", gap: "8px", marginTop: "4px" }}>
               <button
                 onClick={handleSaveCourse}
                 style={{
                   flex: 1,
-                  padding: "8px 16px",
+                  padding: "6px 10px",
                   backgroundColor: "#7c3aed",
                   color: "white",
                   border: "none",
@@ -349,7 +334,7 @@ const CourseProgress = () => {
                 onClick={handleCancelAdd}
                 style={{
                   flex: 1,
-                  padding: "8px 16px",
+                  padding: "6px 10px",
                   backgroundColor: "#e5e7eb",
                   color: "#374151",
                   border: "none",
@@ -370,15 +355,15 @@ const CourseProgress = () => {
       )}
 
       {/* Courses List */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         {filteredCourses.length > 0 ? (
           filteredCourses.map((course) => (
-            <div key={course.id} style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <div key={course.id} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <div
                 style={{
-                  width: "48px",
-                  height: "48px",
-                  borderRadius: "12px",
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "10px",
                   backgroundColor: course.color,
                   display: "flex",
                   alignItems: "center",
@@ -395,26 +380,32 @@ const CourseProgress = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    marginBottom: "8px",
+                    marginBottom: "4px",
                   }}
                 >
                   <div>
-                    <h4 style={{ fontWeight: "600", color: "#1a202c", marginBottom: "2px", fontSize: "14px" }}>
+                    <h4
+                      style={{ fontWeight: "600", color: "#1a202c", marginBottom: "1px", fontSize: "13px", margin: 0 }}
+                    >
                       {course.title}
                     </h4>
-                    <p style={{ fontSize: "12px", color: "#718096" }}>
+                    <p style={{ fontSize: "11px", color: "#718096", margin: 0 }}>
                       {course.avatar} {course.instructor}
                     </p>
                   </div>
                   <div style={{ textAlign: "right" }}>
-                    <p style={{ fontSize: "10px", color: "#a0aec0", marginBottom: "2px", fontWeight: "500" }}>
+                    <p
+                      style={{ fontSize: "10px", color: "#a0aec0", marginBottom: "1px", fontWeight: "500", margin: 0 }}
+                    >
                       Remaining
                     </p>
-                    <p style={{ fontSize: "12px", fontWeight: "600", color: "#1a202c" }}>{course.remaining}</p>
+                    <p style={{ fontSize: "11px", fontWeight: "600", color: "#1a202c", margin: 0 }}>
+                      {course.remaining}
+                    </p>
                   </div>
                 </div>
 
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                   <div className="progress-bar" style={{ flex: 1 }}>
                     <div
                       className="progress-fill"
@@ -424,7 +415,7 @@ const CourseProgress = () => {
                       }}
                     ></div>
                   </div>
-                  <span style={{ fontSize: "14px", fontWeight: "700", color: "#1a202c" }}>{course.progress}%</span>
+                  <span style={{ fontSize: "12px", fontWeight: "700", color: "#1a202c" }}>{course.progress}%</span>
                 </div>
               </div>
             </div>
@@ -433,9 +424,9 @@ const CourseProgress = () => {
           <div
             style={{
               textAlign: "center",
-              padding: "40px 20px",
+              padding: "16px",
               color: "#718096",
-              fontSize: "14px",
+              fontSize: "13px",
             }}
           >
             No {filterType.toLowerCase()} courses found.

@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date(2023, 7)) // August 2023
   const [selectedDay, setSelectedDay] = useState(17) // Default selected day
-  const [showYearPicker, setShowYearPicker] = useState(false)
+  // Removed unused state variables
 
   const monthNames = [
     "January",
@@ -64,92 +64,10 @@ const Calendar = () => {
     }
   }
 
-  const handleYearChange = (year) => {
-    const newDate = new Date(currentDate)
-    newDate.setFullYear(year)
-    setCurrentDate(newDate)
-    setSelectedDay(null)
-    setShowYearPicker(false)
-  }
-
-  const generateYearOptions = () => {
-    const currentYear = new Date().getFullYear()
-    const years = []
-    for (let year = currentYear - 10; year <= currentYear + 10; year++) {
-      years.push(year)
-    }
-    return years
-  }
-
   return (
-    <div className="card" style={{ padding: "16px", minHeight: "auto", maxHeight: "380px" }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
-        <div style={{ position: "relative" }}>
-          <h3
-            style={{
-              fontSize: "0.9rem",
-              fontWeight: "600",
-              color: "#1a202c",
-              cursor: "pointer",
-              padding: "4px 6px",
-              borderRadius: "4px",
-              transition: "background-color 0.2s",
-            }}
-            onClick={() => setShowYearPicker(!showYearPicker)}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = "#f7fafc")}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
-          >
-            {monthNames[currentDate.getMonth()]}, {currentDate.getFullYear()}
-          </h3>
-
-          {showYearPicker && (
-            <div
-              style={{
-                position: "absolute",
-                top: "100%",
-                left: "0",
-                marginTop: "4px",
-                backgroundColor: "white",
-                border: "1px solid #e2e8f0",
-                borderRadius: "8px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                zIndex: 20,
-                maxHeight: "120px",
-                overflowY: "auto",
-                minWidth: "80px",
-              }}
-            >
-              {generateYearOptions().map((year) => (
-                <button
-                  key={year}
-                  onClick={() => handleYearChange(year)}
-                  style={{
-                    width: "100%",
-                    padding: "4px 8px",
-                    textAlign: "left",
-                    border: "none",
-                    background: year === currentDate.getFullYear() ? "#f7fafc" : "transparent",
-                    color: "#1a202c",
-                    fontSize: "11px",
-                    fontWeight: "500",
-                    cursor: "pointer",
-                    transition: "background-color 0.2s",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (year !== currentDate.getFullYear()) e.target.style.backgroundColor = "#f7fafc"
-                  }}
-                  onMouseLeave={(e) => {
-                    if (year !== currentDate.getFullYear()) e.target.style.backgroundColor = "transparent"
-                  }}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+    <div style={{ padding: 0, minHeight: "auto" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <button
             onClick={() => navigateMonth(-1)}
             style={{
@@ -164,8 +82,13 @@ const Calendar = () => {
             onMouseEnter={(e) => (e.target.style.backgroundColor = "#f7fafc")}
             onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
           >
-            <ChevronLeft style={{ height: "16px", width: "16px" }} />
+            <ChevronLeft style={{ height: "14px", width: "14px" }} />
           </button>
+
+          <h3 style={{ fontSize: "0.9rem", fontWeight: "600", color: "#1a202c", margin: 0 }}>
+            {monthNames[currentDate.getMonth()]}, {currentDate.getFullYear()}
+          </h3>
+
           <button
             onClick={() => navigateMonth(1)}
             style={{
@@ -180,13 +103,16 @@ const Calendar = () => {
             onMouseEnter={(e) => (e.target.style.backgroundColor = "#f7fafc")}
             onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
           >
-            <ChevronRight style={{ height: "16px", width: "16px" }} />
+            <ChevronRight style={{ height: "14px", width: "14px" }} />
           </button>
         </div>
       </div>
 
       {/* Days of week header */}
-      <div className="calendar-grid" style={{ marginBottom: "6px", display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "2px" }}>
+      <div
+        className="calendar-grid"
+        style={{ marginBottom: "4px", display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "2px" }}
+      >
         {daysOfWeek.map((day, index) => (
           <div
             key={index}
@@ -195,7 +121,7 @@ const Calendar = () => {
               fontSize: "11px",
               fontWeight: "600",
               color: "#a0aec0",
-              padding: "4px 0",
+              padding: "2px 0",
             }}
           >
             {day}
@@ -204,7 +130,7 @@ const Calendar = () => {
       </div>
 
       {/* Calendar grid */}
-      <div className="calendar-grid" style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "3px" }}>
+      <div className="calendar-grid" style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "2px" }}>
         {days.map((day, index) => (
           <div
             key={index}
@@ -216,14 +142,14 @@ const Calendar = () => {
               alignItems: "center",
               justifyContent: "center",
               borderRadius: "4px",
-              fontSize: "14px",
+              fontSize: "12px",
               fontWeight: "500",
               cursor: day ? "pointer" : "default",
               transition: "all 0.2s",
-              minHeight: "32px",
-              maxHeight: "32px",
+              minHeight: "24px",
+              maxHeight: "24px",
               // Only apply styling to actual days, not empty cells
-              backgroundColor: day && day === selectedDay ? "#fbbf24" : "transparent",
+              backgroundColor: day && day === selectedDay ? "#c1ff72" : "transparent",
               color: day && day === selectedDay ? "#1f2937" : day ? "#374151" : "transparent",
             }}
             onMouseEnter={(e) => {

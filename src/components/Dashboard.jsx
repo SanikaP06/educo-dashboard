@@ -48,45 +48,97 @@ const Dashboard = () => {
       <div className={`main-content ${!sidebarOpen && !isMobile ? "sidebar-closed" : ""}`}>
         <Header setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
 
-        <div className="dashboard-layout">
+        <div className="dashboard-layout" style={{ paddingTop: "6px" }}>
           {/* Left Content */}
           <div className="left-content">
-            <div style={{ marginBottom: "32px" }}>
-              <h1
-                style={{
-                  fontSize: "2.5rem",
-                  fontWeight: "700",
-                  color: "#1a202c",
-                  marginBottom: "8px",
-                  lineHeight: "1.2",
-                }}
+            <div style={{ marginBottom: "14px" }}>
+              <div
+                style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}
               >
-                Welcome back Taylor 👋
-              </h1>
+                <h2 style={{ fontSize: "1.25rem", fontWeight: "600", color: "#1a202c", margin: 0 }}>New Courses</h2>
+                <button
+                  style={{
+                    color: "#6b7280",
+                    fontSize: "14px",
+                    textDecoration: "none",
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => console.log("View all courses")}
+                >
+                  View All
+                </button>
+              </div>
+              <NewCourses />
             </div>
-
-            <NewCourses />
 
             {/* Middle Section with Hours Activity and Daily Schedule side by side */}
             <div className="middle-section">
-              <div className="card">
+              <div
+                style={{
+                  background: "white",
+                  borderRadius: "16px",
+                  padding: "14px",
+                  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
+                  border: "1px solid rgba(0, 0, 0, 0.03)",
+                }}
+              >
                 <HoursActivity />
               </div>
-              <div className="card">
+              <div
+                style={{
+                  background: "white",
+                  borderRadius: "16px",
+                  padding: "14px",
+                  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
+                  border: "1px solid rgba(0, 0, 0, 0.03)",
+                }}
+              >
                 <DailySchedule />
               </div>
             </div>
 
             {/* Course Progress below - full width */}
-            <div className="card">
+            <div
+              style={{
+                background: "white",
+                borderRadius: "16px",
+                padding: "14px",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
+                border: "1px solid rgba(0, 0, 0, 0.03)",
+              }}
+            >
               <CourseProgress />
             </div>
           </div>
 
           {/* Right Sidebar */}
           <div className="right-sidebar">
-            <Calendar />
-            <Assignments />
+            <div
+              style={{
+                background: "white",
+                borderRadius: "16px",
+                padding: "14px",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
+                marginBottom: "14px",
+                border: "1px solid rgba(0, 0, 0, 0.03)",
+              }}
+            >
+              <Calendar />
+            </div>
+            <div
+              style={{
+                background: "white",
+                borderRadius: "16px",
+                padding: "14px",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
+                border: "1px solid rgba(0, 0, 0, 0.03)",
+              }}
+            >
+              <Assignments />
+            </div>
           </div>
         </div>
       </div>

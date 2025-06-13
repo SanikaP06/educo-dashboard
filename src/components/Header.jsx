@@ -1,49 +1,87 @@
 "use client"
 import { Search, Menu } from "lucide-react"
+import { useState, useEffect } from "react"
 
 const Header = ({ setSidebarOpen, sidebarOpen }) => {
+  const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1200)
+
+  // Track window size for responsiveness
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  // Determine if we're on mobile
+  const isMobile = windowWidth < 768
+
   return (
     <header className="header">
       <div
         style={{
           display: "flex",
-          alignItems: "center",
+          alignItems: isMobile ? "flex-start" : "center",
           justifyContent: "space-between",
-          padding: "20px 32px",
+          padding: "12px 32px",
           maxWidth: "1600px",
           margin: "0 auto",
           width: "100%",
+          flexDirection: isMobile ? "column" : "row",
+          gap: isMobile ? "12px" : "0",
         }}
       >
-        {/* Menu button - show on mobile or when sidebar is closed on desktop */}
-        <button
-          onClick={() => setSidebarOpen(true)}
+        {/* Top section with menu button and welcome message */}
+        <div
           style={{
-            display: window.innerWidth < 1024 || !sidebarOpen ? "flex" : "none",
-            padding: "10px",
-            borderRadius: "12px",
-            color: "#718096",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
+            display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            transition: "all 0.2s",
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.color = "#1a202c"
-            e.target.style.backgroundColor = "#f7fafc"
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.color = "#718096"
-            e.target.style.backgroundColor = "transparent"
+            width: isMobile ? "100%" : "auto",
           }}
         >
-          <Menu style={{ height: "24px", width: "24px" }} />
-        </button>
+          {/* Menu button - show on mobile or when sidebar is closed on desktop */}
+          <button
+            onClick={() => setSidebarOpen(true)}
+            style={{
+              display: windowWidth < 1024 || !sidebarOpen ? "flex" : "none",
+              padding: "10px",
+              borderRadius: "12px",
+              color: "#718096",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "all 0.2s",
+              marginRight: "12px",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.color = "#1a202c"
+              e.target.style.backgroundColor = "#f7fafc"
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.color = "#718096"
+              e.target.style.backgroundColor = "transparent"
+            }}
+          >
+            <Menu style={{ height: "24px", width: "24px" }} />
+          </button>
 
-        {/* Spacer to push search and user to the right */}
-        <div style={{ flex: 1 }} />
+          {/* Welcome message - increased font size */}
+          <h1
+            style={{
+              fontSize: "1.4rem", // Increased from 1.1rem to be larger than "New Courses" (1.25rem)
+              fontWeight: "700",
+              color: "#1a202c",
+              margin: 0,
+              lineHeight: "1.2",
+            }}
+          >
+            Welcome back Taylor 👋
+          </h1>
+        </div>
 
         {/* Search and User section - positioned on the right */}
         <div
@@ -51,12 +89,14 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
             display: "flex",
             alignItems: "center",
             gap: "20px",
+            marginLeft: isMobile ? "0" : "auto",
+            width: isMobile ? "100%" : "auto",
           }}
         >
           <div
             style={{
-              maxWidth: "300px",
-              width: "300px", // Fixed width instead of flex
+              maxWidth: isMobile ? "100%" : "300px",
+              width: isMobile ? "100%" : "300px",
               position: "relative",
             }}
           >
@@ -80,14 +120,14 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
                   width: "100%",
                   paddingLeft: "44px",
                   paddingRight: "20px",
-                  paddingTop: "12px",
-                  paddingBottom: "12px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px",
                   border: "1px solid #e2e8f0",
-                  borderRadius: "12px",
+                  borderRadius: "24px",
                   fontSize: "14px",
                   outline: "none",
                   transition: "all 0.2s",
-                  backgroundColor: "#f7fafc",
+                  backgroundColor: "#f9fafb",
                 }}
                 onFocus={(e) => {
                   e.target.style.borderColor = "#7c3aed"
@@ -97,7 +137,7 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
                 onBlur={(e) => {
                   e.target.style.borderColor = "#e2e8f0"
                   e.target.style.boxShadow = "none"
-                  e.target.style.backgroundColor = "#f7fafc"
+                  e.target.style.backgroundColor = "#f9fafb"
                 }}
               />
             </div>
@@ -108,7 +148,7 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
               width: "40px",
               height: "40px",
               borderRadius: "50%",
-              background: "linear-gradient(135deg, #c084fc, #f472b6)",
+              overflow: "hidden",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -116,6 +156,7 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
               transition: "transform 0.2s",
               border: "2px solid white",
               boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+              flexShrink: 0,
             }}
             onMouseEnter={(e) => {
               e.target.style.transform = "scale(1.05)"
@@ -124,15 +165,11 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
               e.target.style.transform = "scale(1)"
             }}
           >
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: "700",
-                color: "white",
-              }}
-            >
-              T
-            </span>
+            <img
+              src="/placeholder.svg?height=40&width=40"
+              alt="Profile"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
           </div>
         </div>
       </div>
