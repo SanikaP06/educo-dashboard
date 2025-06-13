@@ -1,6 +1,7 @@
 "use client"
 import { Search, Menu } from "lucide-react"
 import { useState, useEffect } from "react"
+import profileImg from "../images/profile.jpg"
 
 const Header = ({ setSidebarOpen, sidebarOpen }) => {
   const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1200)
@@ -69,10 +70,10 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
             <Menu style={{ height: "24px", width: "24px" }} />
           </button>
 
-          {/* Welcome message - increased font size */}
+          
           <h1
             style={{
-              fontSize: "1.4rem", // Increased from 1.1rem to be larger than "New Courses" (1.25rem)
+              fontSize: "1.4rem", 
               fontWeight: "700",
               color: "#1a202c",
               margin: 0,
@@ -166,8 +167,8 @@ const Header = ({ setSidebarOpen, sidebarOpen }) => {
             }}
           >
             <img
-              src="/placeholder.svg?height=40&width=40"
-              alt="Profile"
+              src={profileImg}
+              alt="Taylor's Profile"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </div>
