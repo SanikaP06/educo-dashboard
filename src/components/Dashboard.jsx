@@ -10,6 +10,7 @@ import Calendar from "./Calendar"
 import Assignments from "./Assignments"
 import CourseProgress from "./CourseProgress"
 
+
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true) // Default to open on desktop
   const [isMobile, setIsMobile] = useState(false)
