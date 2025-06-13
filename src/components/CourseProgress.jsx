@@ -22,7 +22,7 @@ const CourseProgress = () => {
       remaining: "8h 45 min",
       progress: 45,
       color: "#e9d5ff",
-      progressColor: "#8b5cf6",
+      progressColor: "#8b5cf6", // Keeping the original purple color
       avatar: "👤",
       status: "Active",
     },
@@ -33,7 +33,7 @@ const CourseProgress = () => {
       remaining: "18h 12 min",
       progress: 75,
       color: "#fce7f3",
-      progressColor: "#10b981",
+      progressColor: "#c1ff72", // Changed from dark green to fluorescent green
       avatar: "👤",
       status: "Active",
     },
@@ -59,11 +59,11 @@ const CourseProgress = () => {
   const handleSaveCourse = () => {
     if (newCourse.title && newCourse.instructor) {
       const courseColors = [
-        { color: "#e9d5ff", progressColor: "#8b5cf6" },
-        { color: "#fce7f3", progressColor: "#ec4899" },
-        { color: "#dbeafe", progressColor: "#3b82f6" },
-        { color: "#dcfce7", progressColor: "#22c55e" },
-        { color: "#fed7aa", progressColor: "#f97316" },
+        { color: "#e9d5ff", progressColor: "#c1ff72" },
+        { color: "#fce7f3", progressColor: "#c1ff72" },
+        { color: "#dbeafe", progressColor: "#c1ff72" },
+        { color: "#dcfce7", progressColor: "#c1ff72" },
+        { color: "#fed7aa", progressColor: "#c1ff72" },
       ]
 
       const randomColor = courseColors[Math.floor(Math.random() * courseColors.length)]
@@ -186,10 +186,10 @@ const CourseProgress = () => {
           <button
             onClick={handleAddCourse}
             style={{
-              width: "24px",
-              height: "24px",
+              width: "28px",
+              height: "28px",
               backgroundColor: "#c1ff72",
-              borderRadius: "50%",
+              borderRadius: "8px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -200,7 +200,7 @@ const CourseProgress = () => {
             onMouseEnter={(e) => (e.target.style.backgroundColor = "#b3f264")}
             onMouseLeave={(e) => (e.target.style.backgroundColor = "#c1ff72")}
           >
-            <Plus style={{ height: "12px", width: "12px", color: "#1a202c" }} />
+            <Plus style={{ height: "14px", width: "14px", color: "#1a202c" }} />
           </button>
         </div>
       </div>
@@ -316,17 +316,17 @@ const CourseProgress = () => {
                 style={{
                   flex: 1,
                   padding: "6px 10px",
-                  backgroundColor: "#7c3aed",
-                  color: "white",
+                  backgroundColor: "#c1ff72",
+                  color: "#1a202c",
                   border: "none",
                   borderRadius: "6px",
                   fontSize: "12px",
-                  fontWeight: "500",
+                  fontWeight: "600",
                   cursor: "pointer",
                   transition: "background-color 0.2s",
                 }}
-                onMouseEnter={(e) => (e.target.style.backgroundColor = "#6d28d9")}
-                onMouseLeave={(e) => (e.target.style.backgroundColor = "#7c3aed")}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = "#b3f264")}
+                onMouseLeave={(e) => (e.target.style.backgroundColor = "#c1ff72")}
               >
                 Add Course
               </button>

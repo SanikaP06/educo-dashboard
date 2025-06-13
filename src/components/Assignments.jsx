@@ -39,8 +39,8 @@ const Assignments = () => {
       title: "Market Research",
       dueDate: "14 June, 12:45 AM",
       status: "Completed",
-      statusColor: "#bbf7d0",
-      statusTextColor: "#065f46",
+      statusColor: "#c1ff72", // Updated to fluorescent green
+      statusTextColor: "#1a202c",
       avatar: "🔍",
     },
     {
@@ -94,7 +94,7 @@ const Assignments = () => {
     if (newAssignment.title && newAssignment.dueDate) {
       const statusColors = {
         "In progress": { color: "#bfdbfe", textColor: "#1e40af" },
-        Completed: { color: "#bbf7d0", textColor: "#065f46" },
+        Completed: { color: "#c1ff72", textColor: "#1a202c" }, // Updated to fluorescent green
         Upcoming: { color: "#fed7aa", textColor: "#c2410c" },
       }
 
@@ -249,7 +249,7 @@ const Assignments = () => {
             style={{
               width: "28px",
               height: "28px",
-              backgroundColor: "#9ae6b4",
+              backgroundColor: "#c1ff72", // Updated to fluorescent green
               borderRadius: "8px",
               display: "flex",
               alignItems: "center",
@@ -259,8 +259,8 @@ const Assignments = () => {
               transition: "all 0.2s",
               flexShrink: 0,
             }}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = "#68d391")}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = "#9ae6b4")}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#b3f264")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "#c1ff72")}
           >
             <Plus style={{ height: "14px", width: "14px", color: "#1a202c" }} />
           </button>
@@ -359,7 +359,12 @@ const Assignments = () => {
                       padding: "4px 8px",
                       borderRadius: "6px",
                       border: "1px solid #e2e8f0",
-                      backgroundColor: newAssignment.status === status ? "#f3f4f6" : "white",
+                      backgroundColor:
+                        newAssignment.status === status
+                          ? status === "Completed"
+                            ? "#c1ff72"
+                            : "#f3f4f6" // Use fluorescent green for Completed
+                          : "white",
                       color: "#1a202c",
                       fontSize: "11px",
                       fontWeight: newAssignment.status === status ? "600" : "400",
@@ -396,17 +401,17 @@ const Assignments = () => {
                 style={{
                   flex: 1,
                   padding: "8px 12px",
-                  backgroundColor: "#7c3aed",
-                  color: "white",
+                  backgroundColor: "#c1ff72", // Updated to fluorescent green
+                  color: "#1a202c",
                   border: "none",
                   borderRadius: "6px",
                   fontSize: "12px",
-                  fontWeight: "500",
+                  fontWeight: "600",
                   cursor: "pointer",
                   transition: "background-color 0.2s",
                 }}
-                onMouseEnter={(e) => (e.target.style.backgroundColor = "#6d28d9")}
-                onMouseLeave={(e) => (e.target.style.backgroundColor = "#7c3aed")}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = "#b3f264")}
+                onMouseLeave={(e) => (e.target.style.backgroundColor = "#c1ff72")}
               >
                 Add Assignment
               </button>
